@@ -1,0 +1,32 @@
+@startuml
+
+actor Client
+actor Operator
+actor Driver
+participant DF
+
+
+
+Client --> DF : Указывает себя
+Driver --> DF : Указывает себя
+Operator --> DF : Запоминает клиентов и водителей
+
+Operator --> Client : Просит расположение клиента
+Client --> Operator : Высылает свое расположение
+
+Operator --> Driver : Передает местоположение клиента
+Driver --> Driver : Рассчитывает расстояние до клиента
+Driver --> Operator : Отправляет расстояние до клиента
+
+Operator --> Operator : Рассчитывает наилучшее предложение
+
+Operator --> Driver : Дает команду о доставке этого клиента
+Driver --> Driver : Блокируется на время поездки
+
+Operator --> Client : Выдает информацию о водителе
+Client --> Client : Блокируется на время поездки
+
+
+
+
+@enduml

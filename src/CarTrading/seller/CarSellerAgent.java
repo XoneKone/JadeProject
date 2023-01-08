@@ -74,7 +74,7 @@ public class CarSellerAgent extends Agent {
     private class OfferRequestsServer extends CyclicBehaviour {
         public void action() {
             MessageTemplate mt = MessageTemplate.MatchPerformative(ACLMessage.CFP);
-            ACLMessage msg = myAgent.receive();
+            ACLMessage msg = myAgent.receive(mt);
             if (msg != null) {
                 String[] requirements = msg.getContent().split(" "); // требования покупателя
                 int mileageReq = Integer.parseInt(requirements[0]);
